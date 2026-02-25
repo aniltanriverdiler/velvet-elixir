@@ -60,7 +60,7 @@ const Hero = () => {
     const endValue = isMobile ? "120% top" : "bottom top";
 
     // Create Timeline for Video
-    let tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "video",
         start: startValue,
@@ -71,10 +71,11 @@ const Hero = () => {
     });
 
     // Animate Video
-    videoRef.current?.onloadedmetadata = () => {
-      tl.to(videoRef.current, {
-        currentTime: videoRef.current.duration,
-      });
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.onloadedmetadata = () => {
+      tl.to(video, { currentTime: video.duration });
     };
   }, []);
 
