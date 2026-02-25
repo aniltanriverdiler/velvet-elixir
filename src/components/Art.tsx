@@ -4,11 +4,14 @@ import { useGSAP } from "@gsap/react";
 import { featureLists, goodLists } from "../../constants";
 
 const Art = () => {
+  // Mobile Media Query
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
+  // Art Animation
   useGSAP(() => {
     const start = isMobile ? "top 20%" : "top top";
 
+    // Mask Timeline
     const maskTimeLine = gsap.timeline({
       scrollTrigger: {
         trigger: "#art",
@@ -19,6 +22,7 @@ const Art = () => {
       },
     });
 
+    // Mask Animation
     maskTimeLine
       .to(".will-fade", { opacity: 0, stagger: 0.2, ease: "power1.inOut" })
       .to(".masked-img", {
@@ -36,6 +40,7 @@ const Art = () => {
       <div className="container mx-auto h-full pt-20">
         <h2 className="will-fade">The ART</h2>
 
+        {/* Content Section */}
         <div className="content">
           <ul className="space-y-4 will-fade">
             {goodLists.map((feature, index) => (
@@ -46,6 +51,7 @@ const Art = () => {
             ))}
           </ul>
 
+          {/* Cocktail Image Section */}
           <div className="cocktail-img">
             <img
               src="/images/under-img.jpg"
@@ -54,6 +60,7 @@ const Art = () => {
             />
           </div>
 
+          {/* Feature List Section */}
           <ul className="space-y-4 will-fade">
             {featureLists.map((feature, index) => (
               <li key={index} className="flex items-center justify-start gap-2">
@@ -64,6 +71,7 @@ const Art = () => {
           </ul>
         </div>
 
+        {/* Masked Container Section */}
         <div className="masked-container">
           <h2 className="will-fade">Sip-Worthy Perfection</h2>
           <div id="masked-content">
