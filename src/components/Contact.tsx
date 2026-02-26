@@ -4,6 +4,7 @@ import { SplitText } from "gsap/all";
 import gsap from "gsap";
 
 const Contact = () => {
+  // Contact section text animation
   useGSAP(() => {
     const titleSplit = SplitText.create("#contact h2", { type: "words" });
 
@@ -44,6 +45,7 @@ const Contact = () => {
 
   return (
     <footer id="contact">
+      {/* Contact section leaves images */}
       <img
         src="/images/footer-right-leaf.png"
         alt="leaf-right"
@@ -55,6 +57,7 @@ const Contact = () => {
         id="f-left-leaf"
       />
 
+      {/* Contact section content */}
       <div className="content">
         <h2>Where to Find Us</h2>
 
@@ -69,6 +72,7 @@ const Contact = () => {
           <p>hello@jsmcocktail.com</p>
         </div>
 
+        {/* Contact section opening hours */}
         <div>
           <h3>Open Every Day</h3>
           {openingHours.map((time) => (
@@ -79,6 +83,7 @@ const Contact = () => {
           ))}
         </div>
 
+        {/* Contact section socials */}
         <div>
           <h3>Socials</h3>
 
