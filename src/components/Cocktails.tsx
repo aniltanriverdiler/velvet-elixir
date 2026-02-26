@@ -1,8 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { cocktailLists, mockTailLists } from "../../constants";
+import { cocktailLists, mockTailLists } from "@constants/index";
+import type { Beverage } from "@/types";
 
-const Cocktails = () => {
+const Cocktails = (): React.JSX.Element => {
+  // Cocktails section leaf parallax animation
   useGSAP(() => {
     const parallaxTimeLine = gsap.timeline({
       scrollTrigger: {
@@ -26,7 +28,7 @@ const Cocktails = () => {
 
   return (
     <section id="cocktails" className="noisy">
-      {/* Cocktail Left & Right Leaf Section */}
+      {/* Cocktails section left and right leaf images */}
       <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id="c-left-leaf" />
       <img
         src="/images/cocktail-right-leaf.png"
@@ -34,14 +36,14 @@ const Cocktails = () => {
         id="c-right-leaf"
       />
 
-      {/* Cocktail List Section */}
+      {/* Cocktails section list */}
       <div className="list">
         <div className="popular">
           <h2>Most Popular Cocktails:</h2>
 
-          {/* Popular Cocktail List */}
+          {/* Cocktails section popular list */}
           <ul>
-            {cocktailLists.map(({ name, country, detail, price }) => (
+            {cocktailLists.map(({ name, country, detail, price }: Beverage) => (
               <li key={name}>
                 <div className="md:me-28">
                   <h3>{name}</h3>
@@ -55,13 +57,13 @@ const Cocktails = () => {
           </ul>
         </div>
 
-        {/* Loved Mocktail List */}
+        {/* Cocktails section loved list */}
         <div className="loved">
           <h2>Most Loved Mocktails:</h2>
 
-          {/* Loved Mocktail List */}
+          {/* Cocktails section loved list */}
           <ul>
-            {mockTailLists.map(({ name, country, detail, price }) => (
+            {mockTailLists.map(({ name, country, detail, price }: Beverage) => (
               <li key={name}>
                 <div className="me-28">
                   <h3>{name}</h3>

@@ -1,9 +1,10 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { navLinks } from "../../constants";
+import { navLinks } from "@constants/index";
+import type { NavLink } from "@/types";
 
-const Navbar = () => {
-  // Navbar Animation
+const Navbar = (): React.JSX.Element => {
+  // Navbar animation
   useGSAP(() => {
     const navTween = gsap.timeline({
       scrollTrigger: {
@@ -27,15 +28,15 @@ const Navbar = () => {
   return (
     <nav>
       <div>
-        {/* Logo Section */}
+        {/* Navbar logo */}
         <a href="#home" className="flex items-center gap-2">
           <img src="/images/logo.png" alt="logo" />
           <p>Velvet Elixir</p>
         </a>
 
-        {/* Navlinks Section */}
+        {/* Navbar links */}
         <ul>
-          {navLinks.map((link) => (
+          {navLinks.map((link: NavLink) => (
             <li key={link.id}>
               <a href={`#${link.id}`}>{link.title}</a>
             </li>

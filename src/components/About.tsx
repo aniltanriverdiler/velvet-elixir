@@ -2,8 +2,8 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 
-const About = () => {
-  // About Animation
+const About = (): React.JSX.Element => {
+  // About section text animation
   useGSAP(() => {
     const titleSplit = SplitText.create("#about h2", { type: "words" });
 
@@ -14,7 +14,6 @@ const About = () => {
       },
     });
 
-    // Animate Title
     scrollTimeLine
       .from(titleSplit.words, {
         opacity: 0,
@@ -37,8 +36,8 @@ const About = () => {
 
   return (
     <div id="about">
+      {/* About section content */}
       <div className="mb-16 md:px-0 px-5">
-        {/* About Content Section */}
         <div className="content">
           <div className="md:col-span-8">
             <p className="badge">Best Cocktails</p>
@@ -48,7 +47,7 @@ const About = () => {
             </h2>
           </div>
 
-          {/* About Sub Content Section */}
+          {/* About section sub-content */}
           <div className="sub-content">
             <p>
               Every cocktail we serve is a reflection of our obsession with
@@ -68,35 +67,34 @@ const About = () => {
         </div>
       </div>
 
-      {/* About Grid Section */}
       <div className="top-grid">
-        {/* About Grid Item 1 */}
+        {/* About section top grid */}
         <div className="md:col-span-3">
           <div className="noisy" />
           <img src="/images/abt1.png" alt="grid-img-1" />
         </div>
 
-        {/* About Grid Item 2 */}
+        {/* About section middle grid */}
         <div className="md:col-span-6">
           <div className="noisy" />
           <img src="/images/abt2.png" alt="grid-img-2" />
         </div>
 
-        {/* About Grid Item 3 */}
+        {/* About section bottom grid */}
         <div className="md:col-span-3">
           <div className="noisy" />
           <img src="/images/abt5.png" alt="grid-img-5" />
         </div>
       </div>
 
-      {/* About Bottom Grid Section */}
+      {/* About section bottom grid */}
       <div className="bottom-grid">
         <div className="md:col-span-8">
           <div className="noisy" />
           <img src="/images/abt3.png" alt="grid-img-3" />
         </div>
 
-        {/* About Bottom Grid Item 4 */}
+        {/* About section right grid */}
         <div className="md:col-span-4">
           <div className="noisy" />
           <img src="/images/abt4.png" alt="grid-img-4" />

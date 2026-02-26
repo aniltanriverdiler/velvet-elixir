@@ -1,17 +1,15 @@
 import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
 import { useGSAP } from "@gsap/react";
-import { featureLists, goodLists } from "../../constants";
+import { featureLists, goodLists } from "@constants/index";
 
-const Art = () => {
-  // Mobile Media Query
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+const Art = (): React.JSX.Element => {
+  const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
 
-  // Art Animation
+  // Art section mask animation
   useGSAP(() => {
-    const start = isMobile ? "top 20%" : "top top";
+    const start: string = isMobile ? "top 20%" : "top top";
 
-    // Mask Timeline
     const maskTimeLine = gsap.timeline({
       scrollTrigger: {
         trigger: "#art",
@@ -22,7 +20,6 @@ const Art = () => {
       },
     });
 
-    // Mask Animation
     maskTimeLine
       .to(".will-fade", { opacity: 0, stagger: 0.2, ease: "power1.inOut" })
       .to(".masked-img", {
@@ -40,10 +37,10 @@ const Art = () => {
       <div className="container mx-auto h-full pt-20">
         <h2 className="will-fade">The ART</h2>
 
-        {/* Content Section */}
+        {/* Art section content */}
         <div className="content">
           <ul className="space-y-4 will-fade">
-            {goodLists.map((feature, index) => (
+            {goodLists.map((feature: string, index: number) => (
               <li key={index} className="flex items-center gap-2">
                 <img src="/images/check.png" alt="check" />
                 <p>{feature}</p>
@@ -51,7 +48,7 @@ const Art = () => {
             ))}
           </ul>
 
-          {/* Cocktail Image Section */}
+          {/* Art section cocktail image */}
           <div className="cocktail-img">
             <img
               src="/images/under-img.jpg"
@@ -60,9 +57,9 @@ const Art = () => {
             />
           </div>
 
-          {/* Feature List Section */}
+          {/* Art section features list */}
           <ul className="space-y-4 will-fade">
-            {featureLists.map((feature, index) => (
+            {featureLists.map((feature: string, index: number) => (
               <li key={index} className="flex items-center justify-start gap-2">
                 <img src="/images/check.png" alt="check" />
                 <p className="md:w-fit w-60">{feature}</p>
@@ -71,13 +68,13 @@ const Art = () => {
           </ul>
         </div>
 
-        {/* Masked Container Section */}
+        {/* Art section masked container */}
         <div className="masked-container">
           <h2 className="will-fade">Sip-Worthy Perfection</h2>
           <div id="masked-content">
             <h3>Made with Craft, Poured with Passion</h3>
             <p>
-              This isn’t just a drink. It’s a carefully crafted moment made just
+              This isn't just a drink. It's a carefully crafted moment made just
               for you.
             </p>
           </div>

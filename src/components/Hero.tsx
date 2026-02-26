@@ -4,14 +4,11 @@ import { SplitText } from "gsap/all";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
-const Hero = () => {
-  // Video Reference
+const Hero = (): React.JSX.Element => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
 
-  // Mobile Media Query
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
-  // Hero Animation
+  // Hero section text animation
   useGSAP(() => {
     const heroSplit = new SplitText(".title", {
       type: "chars, words",
@@ -21,10 +18,8 @@ const Hero = () => {
       type: "lines",
     });
 
-    // Apply text-gradient class once before animating
     heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
 
-    // Animate Hero Title
     gsap.from(heroSplit.chars, {
       yPercent: 100,
       duration: 1.8,
@@ -32,7 +27,6 @@ const Hero = () => {
       stagger: 0.06,
     });
 
-    // Animate Hero Paragraph
     gsap.from(paragraphSplit.lines, {
       opacity: 0,
       yPercent: 100,
@@ -42,7 +36,6 @@ const Hero = () => {
       delay: 1,
     });
 
-    // Animate Hero Leaves and Arrow
     gsap
       .timeline({
         scrollTrigger: {
@@ -56,10 +49,9 @@ const Hero = () => {
       .to(".left-leaf", { y: -200 }, 0)
       .to(".arrow", { y: 100 }, 0);
 
-    const startValue = isMobile ? "top 50%" : "center 60%";
-    const endValue = isMobile ? "120% top" : "bottom top";
+    const startValue: string = isMobile ? "top 50%" : "center 60%";
+    const endValue: string = isMobile ? "120% top" : "bottom top";
 
-    // Create Timeline for Video
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "video",
@@ -70,7 +62,6 @@ const Hero = () => {
       },
     });
 
-    // Animate Video
     const video = videoRef.current;
     if (!video) return;
 
@@ -82,10 +73,10 @@ const Hero = () => {
   return (
     <>
       <section id="hero" className="noisy">
-        {/* Hero Title Section */}
+        {/* Hero section title */}
         <h1 className="title">MOJITO</h1>
 
-        {/* Hero Left & Right Leaf Section */}
+        {/* Hero section left and right leaf images */}
         <img
           src="/images/hero-left-leaf.png"
           alt="left-leaf"
@@ -97,7 +88,7 @@ const Hero = () => {
           className="right-leaf"
         />
 
-        {/* Hero Body Section */}
+        {/* Hero section body */}
         <div className="body">
           <div className="content">
             <div className="space-y-5 hidden md:block">
@@ -119,7 +110,7 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Hero Video Section */}
+      {/* Hero section video */}
       <div className="video absolute inset-0">
         <video
           src="/videos/output.mp4"

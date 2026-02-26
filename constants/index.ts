@@ -1,4 +1,14 @@
-const navLinks = [
+import type {
+  NavLink,
+  Beverage,
+  ProfileImage,
+  SliderItem,
+  OpeningHour,
+  Social,
+  StoreInfo,
+} from "@/types";
+
+const navLinks: NavLink[] = [
   {
     id: "cocktails",
     title: "Cocktails",
@@ -17,7 +27,7 @@ const navLinks = [
   },
 ];
 
-const cocktailLists = [
+const cocktailLists: Beverage[] = [
   {
     name: "Chapel Hill Shiraz",
     country: "AU",
@@ -44,7 +54,7 @@ const cocktailLists = [
   },
 ];
 
-const mockTailLists = [
+const mockTailLists: Beverage[] = [
   {
     name: "Tropical Bloom",
     country: "US",
@@ -71,7 +81,7 @@ const mockTailLists = [
   },
 ];
 
-const profileLists = [
+const profileLists: ProfileImage[] = [
   {
     imgPath: "/images/profile1.png",
   },
@@ -86,21 +96,21 @@ const profileLists = [
   },
 ];
 
-const featureLists = [
+const featureLists: string[] = [
   "Perfectly balanced blends",
   "Garnished to perfection",
   "Ice-cold every time",
   "Expertly shaken & stirred",
 ];
 
-const goodLists = [
+const goodLists: string[] = [
   "Handpicked ingredients",
   "Signature techniques",
   "Bartending artistry in action",
   "Freshly muddled flavors",
 ];
 
-const storeInfo = {
+const storeInfo: StoreInfo = {
   heading: "Where to Find Us",
   address: "456, Raq Blvd. #404, Los Angeles, CA 90210",
   contact: {
@@ -109,14 +119,14 @@ const storeInfo = {
   },
 };
 
-const openingHours = [
+const openingHours: OpeningHour[] = [
   { day: "Mon–Thu", time: "11:00am – 12am" },
   { day: "Fri", time: "11:00am – 2am" },
   { day: "Sat", time: "9:00am – 2am" },
   { day: "Sun", time: "9:00am – 1am" },
 ];
 
-const socials = [
+const socials: Social[] = [
   {
     name: "Instagram",
     icon: "/images/insta.png",
@@ -134,7 +144,7 @@ const socials = [
   },
 ];
 
-const sliderLists = [
+const sliderLists: SliderItem[] = [
   {
     id: 1,
     name: "Classic Mojito",
@@ -149,7 +159,7 @@ const sliderLists = [
     image: "/images/drink2.png",
     title: "A Zesty Classic That Never Fails",
     description:
-      "The Margarita is a classic that balances tangy lime, smooth tequila, and a touch of sweetness. Shaken, frozen, or on the rocks—it’s always crisp & refreshing.",
+      "The Margarita is a classic that balances tangy lime, smooth tequila, and a touch of sweetness. Shaken, frozen, or on the rocks—it's always crisp & refreshing.",
   },
   {
     id: 3,

@@ -1,14 +1,14 @@
-import { sliderLists } from "../../constants/index.js";
+import { sliderLists } from "@constants/index";
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import type { SliderItem } from "@/types";
 
-const Menu = () => {
-  // Content Reference
+const Menu = (): React.JSX.Element => {
   const contentRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  // Menu Animation Section
+  // Menu section text animation
   useGSAP(() => {
     gsap.fromTo("#title", { opacity: 0 }, { opacity: 1, duration: 1 });
     gsap.fromTo(
@@ -41,7 +41,7 @@ const Menu = () => {
     );
   }, [currentIndex]);
 
-  // Menu parallax animation
+  // Menu leaf parallax animation
   useGSAP(() => {
     const parallaxTimeline = gsap.timeline({
       scrollTrigger: {
@@ -57,31 +57,27 @@ const Menu = () => {
       .from("#m-right-leaf", { x: 80, y: 120, rotate: 6 }, 0);
   }, []);
 
-  // Menu Navigation Section
-  const totalCocktails = sliderLists.length;
+  // Menu slider logic
+  const totalCocktails: number = sliderLists.length;
 
-  // Go to Slide Function
-  const goToSlide = (index: number) => {
+  const goToSlide = (index: number): void => {
     const newIndex = (index + totalCocktails) % totalCocktails;
-
     setCurrentIndex(newIndex);
   };
 
-  // Get Cocktail at Index Function
-  const getCocktailAt = (indexOffset: number) => {
+  const getCocktailAt = (indexOffset: number): SliderItem => {
     return sliderLists[
       (currentIndex + indexOffset + totalCocktails) % totalCocktails
     ];
   };
 
-  // Get Current, Previous, and Next Cocktail Functions
-  const currentCocktail = getCocktailAt(0);
-  const prevCocktail = getCocktailAt(-1);
-  const nextCocktail = getCocktailAt(1);
+  const currentCocktail: SliderItem = getCocktailAt(0);
+  const prevCocktail: SliderItem = getCocktailAt(-1);
+  const nextCocktail: SliderItem = getCocktailAt(1);
 
   return (
     <section id="menu" aria-labelledby="menu-heading">
-      {/* Menu Left & Right Leaf Section */}
+      {/* Menu left and right leaf images */}
       <img
         src="/images/slider-left-leaf.png"
         alt="left-leaf"
@@ -93,15 +89,15 @@ const Menu = () => {
         id="m-right-leaf"
       />
 
-      {/* Menu Heading Section */}
+      {/* Menu heading */}
       <h2 id="menu-heading" className="sr-only">
         Cocktail Menu
       </h2>
 
-      {/* Menu Navigation Section */}
+      {/* Menu cocktail tabs */}
       <nav className="cocktail-tabs" aria-label="Cocktail Navigation">
-        {sliderLists.map((cocktail, index) => {
-          const isActive = index === currentIndex;
+        {sliderLists.map((cocktail: SliderItem, index: number) => {
+          const isActive: boolean = index === currentIndex;
 
           return (
             <button
@@ -117,9 +113,9 @@ const Menu = () => {
         })}
       </nav>
 
-      {/* Menu Content Section */}
+      {/* Menu content */}
       <div className="content">
-        {/* Menu Arrows Section */}
+        {/* Menu arrows */}
         <div className="arrows">
           <button
             className="text-left"
@@ -133,6 +129,7 @@ const Menu = () => {
             />
           </button>
 
+          {/* Menu next button */}
           <button
             className="text-left"
             onClick={() => goToSlide(currentIndex + 1)}
@@ -146,19 +143,23 @@ const Menu = () => {
           </button>
         </div>
 
-        {/* Menu Cocktail Section */}
+        {/* Menu cocktail image */}
         <div className="cocktail">
-          <img src={currentCocktail.image} className="object-contain" />
+          <img
+            src={currentCocktail.image}
+            alt={currentCocktail.name}
+            className="object-contain"
+          />
         </div>
 
-        {/* Menu Recipe Section */}
+        {/* Menu recipe */}
         <div className="recipe">
           <div ref={contentRef} className="info">
             <p>Recipe for:</p>
             <p id="title">{currentCocktail.name}</p>
           </div>
 
-          {/* Menu Details Section */}
+          {/* Menu recipe details */}
           <div className="details">
             <h2>{currentCocktail.title}</h2>
             <p>{currentCocktail.description}</p>

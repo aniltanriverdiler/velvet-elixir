@@ -1,9 +1,10 @@
-import { openingHours, socials } from "../../constants";
+import { openingHours, socials } from "@constants/index";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import gsap from "gsap";
+import type { OpeningHour, Social } from "@/types";
 
-const Contact = () => {
+const Contact = (): React.JSX.Element => {
   // Contact section text animation
   useGSAP(() => {
     const titleSplit = SplitText.create("#contact h2", { type: "words" });
@@ -45,7 +46,7 @@ const Contact = () => {
 
   return (
     <footer id="contact">
-      {/* Contact section leaves images */}
+      {/* Contact section right and left leaf images */}
       <img
         src="/images/footer-right-leaf.png"
         alt="leaf-right"
@@ -75,7 +76,7 @@ const Contact = () => {
         {/* Contact section opening hours */}
         <div>
           <h3>Open Every Day</h3>
-          {openingHours.map((time) => (
+          {openingHours.map((time: OpeningHour) => (
             <p key={time.day}>
               {" "}
               {time.day} : {time.time}{" "}
@@ -88,7 +89,7 @@ const Contact = () => {
           <h3>Socials</h3>
 
           <div className="flex-center gap-5">
-            {socials.map((social) => (
+            {socials.map((social: Social) => (
               <a
                 key={social.name}
                 href={social.url}
